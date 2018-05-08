@@ -9,6 +9,7 @@ private:
 	string suit;
 	int value;
 	bool isUsed;
+	string deck[52];
 
 public:
 
@@ -27,4 +28,7 @@ public:
 
 	void setUsed(bool);
 	bool getUsed();
+
+	void setCard(int i, string c);
+	string getCard(int i);
 };

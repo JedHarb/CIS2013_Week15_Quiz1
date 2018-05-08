@@ -14,9 +14,6 @@ public:
 	Player(string h, string n, bool s);
 	~Player();
 
-	void setHand(string);
-	string getHand();
-
 	void setName(string);
 	string getName();
 

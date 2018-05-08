@@ -1,8 +1,8 @@
 #include "Card.h"
-//using namespace std;
+using namespace std;
 
 Card::Card() : name("A"), suit("Spades"), value(1), isUsed(false) {
-
+	
 }
 
 Card::Card(string n, string s, int v, bool u) {
@@ -48,6 +48,10 @@ bool Card::getUsed() {
 	return isUsed;
 }
 
-int main() {
-	return 0;
+void Card::setCard(int i, string c) {
+	deck[i] = c;
+}
+
+string Card::getCard(int i) {
+	return deck[i];
 }

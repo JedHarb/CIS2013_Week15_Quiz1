@@ -2,25 +2,17 @@
 using namespace std;
 
 Player::Player() : hand(), name("Jared"), stay(false) {
-	Player(2);
+	//Player(2);
 }
 
-Player::Player(int len, string h, string n, bool s) {
-	hand = new string[len];
+Player::Player(string h, string n, bool s) {
+	//hand = h;
 	name = n;
 	stay = s;
 }
 
 Player::~Player() {
-	delete[] hand;
-}
 
-void Player::setHand(string h) {
-	hand = h;
-}
-
-string Player::getHand() {
-	return hand;
 }
 
 void Player::setName(string n) {
@@ -40,12 +32,3 @@ bool Player::getStay() {
 }
 
 
-//Behavior
-//
-//Game starts, a name is selected for the player.
-//UI
-//
-//2 players and 52 cards are created.
-//Game asked for the name of the non - dealer.
-//Main will issue 2 cards to a dealer, and 2 cards to the player who
-//Blackjack is then played
