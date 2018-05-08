@@ -16,6 +16,7 @@ int main() {
 	string name;
 	Player Player;
 	Card Card;
+	int k = 0;
 
 	//generate a deck
 	for (int i = 0; i < 13; i++) {
@@ -92,8 +93,9 @@ int main() {
 			default:
 				cout << "You shouldn't see this either...";
 			}
-			for (int k = 0; k < 52; k++) {
-				Card.setCard(k, Card.getName + Card.getSuit);
+			if (k < 52) {
+				Card.setCard(k, Card.getName() + Card.getSuit());
+				k++;
 			}
 		}
 	}
