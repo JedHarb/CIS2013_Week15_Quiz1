@@ -38,3 +38,7 @@ void Player::setScore(int s) {
 int Player::getScore() {
 	return score;
 }
+
+void Player::resetScore() {
+	score = 0;
+}

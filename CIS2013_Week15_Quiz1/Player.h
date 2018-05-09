@@ -23,4 +23,6 @@ public:
 
 	void setScore(int);
 	int getScore();
+
+	void resetScore();
 };
