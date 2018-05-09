@@ -6,7 +6,7 @@ Player::Player() : hand(), name("Jared"), stay(false) {
 }
 
 Player::Player(string h, string n, bool s) {
-	//hand = h;
+	hand[0] = h;
 	name = n;
 	stay = s;
 }

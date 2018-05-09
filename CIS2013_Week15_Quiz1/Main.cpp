@@ -1,5 +1,8 @@
-#include "Player.cpp"
-#include "Card.cpp"
+#include "Player.h"
+#include "Card.h"
+#include <stdlib.h>
+#include <time.h>
+using namespace std;
 
 //Behavior
 //
@@ -11,101 +14,112 @@
 //Main will issue 2 cards to a dealer, and 2 cards to the player who
 //Blackjack is then played
 
+int getRandomCard()
+{
+	return rand() % 52;
+}
 
 int main() {
 	string name;
-	Player Player;
-	Card Card;
+	Player Player[2];
+	Card Card[52];
 	int k = 0;
+	int randCard;
 
 	//generate a deck
 	for (int i = 0; i < 13; i++) {
 		switch (i) {
 		case 0: 
-			Card.setName("Ace");
-			Card.setValue(1);
+			Card[i, i+13, i+26, i+39].setName("Ace");
+			Card[i, i+13, i+26, i+39].setValue(1);
 			break;
 		case 1:
-			Card.setName("2");
-			Card.setValue(2);
+			Card[i, i+13, i+26, i+39].setName("2");
+			Card[i, i+13, i+26, i+39].setValue(2);
 			break;
 		case 2:
-			Card.setName("3");
-			Card.setValue(3);
+			Card[i, i+13, i+26, i+39].setName("3");
+			Card[i, i+13, i+26, i+39].setValue(3);
 			break;
 		case 3:
-			Card.setName("4");
-			Card.setValue(4);
+			Card[i, i+13, i+26, i+39].setName("4");
+			Card[i, i+13, i+26, i+39].setValue(4);
 			break;
 		case 4:
-			Card.setName("5");
-			Card.setValue(5);
+			Card[i, i+13, i+26, i+39].setName("5");
+			Card[i, i+13, i+26, i+39].setValue(5);
 			break;
 		case 5:
-			Card.setName("6");
-			Card.setValue(6);
+			Card[i, i+13, i+26, i+39].setName("6");
+			Card[i, i+13, i+26, i+39].setValue(6);
 			break;
 		case 6:
-			Card.setName("7");
-			Card.setValue(7);
+			Card[i, i+13, i+26, i+39].setName("7");
+			Card[i, i+13, i+26, i+39].setValue(7);
 			break;
 		case 7:
-			Card.setName("8");
-			Card.setValue(8);
+			Card[i, i+13, i+26, i+39].setName("8");
+			Card[i, i+13, i+26, i+39].setValue(8);
 			break;
 		case 8:
-			Card.setName("9");
-			Card.setValue(9);
+			Card[i, i+13, i+26, i+39].setName("9");
+			Card[i, i+13, i+26, i+39].setValue(9);
 			break;
 		case 9:
-			Card.setName("10");
-			Card.setValue(10);
+			Card[i, i+13, i+26, i+39].setName("10");
+			Card[i, i+13, i+26, i+39].setValue(10);
 			break;
 		case 10:
-			Card.setName("Jack");
-			Card.setValue(10);
+			Card[i, i+13, i+26, i+39].setName("Jack");
+			Card[i, i+13, i+26, i+39].setValue(10);
 			break;
 		case 11:
-			Card.setName("Queen");
-			Card.setValue(10);
+			Card[i, i+13, i+26, i+39].setName("Queen");
+			Card[i, i+13, i+26, i+39].setValue(10);
 			break;
 		case 12:
-			Card.setName("King");
-			Card.setValue(10);
+			Card[i, i+13, i+26, i+39].setName("King");
+			Card[i, i+13, i+26, i+39].setValue(10);
 			break;
 		default:
 			cout << "You shouldn't see this...";
 		}
 		for (int j = 0; j < 4; j++) {
+			Card[j * 13 + i].setUsed(false);
 			switch (j) {
 			case 1:
-				Card.setSuit("-of-Spades");
+				Card[i + 13].setSuit(" of Spades");
 				break;
 			case 2:
-				Card.setSuit("-of-Clubs");
+				Card[i + 26].setSuit(" of Clubs");
 				break;
 			case 3:
-				Card.setSuit("-of-Hearts");
+				Card[i + 39].setSuit(" of Hearts");
 				break;
-			case 4:
-				Card.setSuit("-of-Diamonds");
+			case 0:
+				Card[i].setSuit(" of Diamonds");
 				break;
 			default:
 				cout << "You shouldn't see this either...";
 			}
-			if (k < 52) {
-				Card.setCard(k, Card.getName() + Card.getSuit());
-				k++;
-			}
 		}
+	}
+
+	for (int k = 0; k < 52; k++) {
+		cout << Card[k].getName() << Card[k].getSuit() << endl;
 	}
 
 	cout << "Welcome to Blackjack. What is your name? ";
 	cin >> name;
-	Player.setName(name);
-	cout << "Okay, " << Player.getName() << " you have "; //cards
+	Player[2].setName(name);
+	cout << "Okay, " << Player[2].getName() << " you have:" << endl;
+
+	//while (deck[randCard])
+	//cout << deck[getRandomCard()];
 
 
+	char x;
+	cin >> x;
 
 	return 0;
 }

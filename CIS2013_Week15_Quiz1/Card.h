@@ -1,4 +1,4 @@
-//#pragma once
+#pragma once
 #include <iostream>
 #include <string>
 using namespace std;
@@ -29,6 +29,6 @@ public:
 	void setUsed(bool);
 	bool getUsed();
 
-	void setCard(int i, string c);
-	string getCard(int i);
+	//void setCard(int i, string c);
+	//string getCard(int i);
 };

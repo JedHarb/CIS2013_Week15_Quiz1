@@ -48,10 +48,11 @@ bool Card::getUsed() {
 	return isUsed;
 }
 
-void Card::setCard(int i, string c) {
-	deck[i] = c;
-}
 
-string Card::getCard(int i) {
-	return deck[i];
-}
+//void Card::setCard(int i, string c) {
+//	deck[i] = c;
+//}
+//
+//string Card::getCard(int i) {
+//	return deck[i];
+//}
