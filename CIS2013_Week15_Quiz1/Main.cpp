@@ -28,7 +28,7 @@ int main() {
 
 	srand(time(NULL));
 
-	//generate a deck //definitely not the easiest way I could have done this
+	//generate a deck //definitely not the easiest way I could have done this...
 	for (int i = 0; i < 13; i++) {
 		switch (i) {
 		case 0: 
@@ -107,16 +107,17 @@ int main() {
 		}
 	}
 
-	// test for proper deck generation
+	//// test for proper deck generation
 	//for (int k = 0; k < 52; k++) {
-	//	cout << Card[k].getName() << Card[k].getSuit() << endl;
+	//	cout << Card[k].getName() << Card[k].getSuit() << Card[k].getUsed() << Card[k].getValue() <<  endl;
 	//}
 
-	Player[0].setName("Dealer");
+	name = "Dealer";
+	Player[0].setName(name);
 	cout << "Welcome to Blackjack. What is your name? ";
 	cin >> name;
 	Player[1].setName(name);
-	cout << "Okay, " << Player[1].getName() << ". The dealer starts and draws" << endl;
+	cout << "Okay, " << Player[1].getName() << ". " << Player[0].getName() << " starts and draws:" << endl;
 		
 	//draw a random card, print it, and update the total
 	randCard = getRandomCard();
@@ -137,7 +138,7 @@ int main() {
 	Player[0].setScore(Card[randCard].getValue());
 
 	cout << "The dealer has " << Player[0].getScore() << "." << endl << endl;
-	cout << "You have:" << endl;
+	cout << "You draw:" << endl;
 
 	//draw a random card, print it, and update the total
 	randCard = getRandomCard();
@@ -159,6 +160,12 @@ int main() {
 
 	cout << "You have " << Player[1].getScore() << "." << endl << endl;
 	
+	while (Player[1].getStay == false) {
+	
+
+	}
+
+
 
 	char x;
 	cin >> x;

@@ -32,7 +32,7 @@ bool Player::getStay() {
 }
 
 void Player::setScore(int s) {
-	score = score + s;
+	score += s;
 }
 
 int Player::getScore() {

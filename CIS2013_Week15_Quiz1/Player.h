@@ -7,8 +7,8 @@ class Player {
 private:
 	string hand[12];
 	string name;
-	bool stay;
-	int score;
+	bool stay = false;
+	int score = 0;
 
 public:
 	Player();

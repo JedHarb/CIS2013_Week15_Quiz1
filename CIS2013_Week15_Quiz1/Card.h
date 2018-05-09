@@ -9,7 +9,7 @@ private:
 	string suit;
 	int value;
 	bool isUsed;
-	string deck[52];
+	//string deck[52];
 
 public:
 
