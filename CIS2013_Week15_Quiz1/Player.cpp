@@ -31,4 +31,10 @@ bool Player::getStay() {
 	return stay;
 }
 
+void Player::setScore(int s) {
+	score += s;
+}
 
+int Player::getScore() {
+	return score;
+}

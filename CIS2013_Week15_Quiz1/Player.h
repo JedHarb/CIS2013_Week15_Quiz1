@@ -8,6 +8,7 @@ private:
 	string hand[12];
 	string name;
 	bool stay;
+	int score;
 
 public:
 	Player();
@@ -19,4 +20,7 @@ public:
 
 	void setStay(bool);
 	bool getStay();
+
+	void setScore(int);
+	int getScore();
 };

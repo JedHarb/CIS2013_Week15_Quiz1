@@ -24,7 +24,9 @@ int main() {
 	Player Player[2];
 	Card Card[52];
 	int k = 0;
-	int randCard;
+	int randCard = 0;
+
+	srand(time(NULL));
 
 	//generate a deck
 	for (int i = 0; i < 13; i++) {
@@ -111,12 +113,31 @@ int main() {
 
 	cout << "Welcome to Blackjack. What is your name? ";
 	cin >> name;
-	Player[2].setName(name);
-	cout << "Okay, " << Player[2].getName() << " you have:" << endl;
+	Player[1].setName(name);
+	cout << "Okay, " << Player[1].getName() << " you have:" << endl;
 
-	//while (deck[randCard])
-	//cout << deck[getRandomCard()];
+	//draw a random card, print it, and update the total
+	randCard = getRandomCard();
+	while (Card[randCard].getUsed() == true) {
+		randCard = getRandomCard();
+		Card[randCard];
+	}
+	Card[randCard].setUsed(true);
+	cout << Card[randCard].getName() << Card[randCard].getSuit() << endl;
+	Player[1].setScore(Card[randCard].getValue);
 
+	//draw a random card, print it, and update the total
+	randCard = getRandomCard();
+	while (Card[randCard].getUsed() == true) {
+		randCard = getRandomCard();
+		Card[randCard];
+	}
+	Card[randCard].setUsed(true);
+	cout << Card[randCard].getName() << Card[randCard].getSuit() << endl;
+	Player[1].setScore(Card[randCard].getValue);
+
+
+	
 
 	char x;
 	cin >> x;
