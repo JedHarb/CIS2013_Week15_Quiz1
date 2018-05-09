@@ -25,10 +25,13 @@ int main() {
 	Card Card[52];
 	int k = 0;
 	int randCard = 0;
+	char hitStay;
 
 	srand(time(NULL));
 
-	//generate a deck //definitely not the easiest way I could have done this...
+
+	//generate a deck 
+	//definitely not the easiest way I could have done this... but it works!
 	for (int i = 0; i < 13; i++) {
 		switch (i) {
 		case 0: 
@@ -138,7 +141,7 @@ int main() {
 	Player[0].setScore(Card[randCard].getValue());
 
 	cout << "The dealer has " << Player[0].getScore() << "." << endl << endl;
-	cout << "You draw:" << endl;
+	cout << Player[1].getName() << " draws:" << endl;
 
 	//draw a random card, print it, and update the total
 	randCard = getRandomCard();
@@ -158,14 +161,71 @@ int main() {
 	cout << Card[randCard].getName() << Card[randCard].getSuit() << endl;
 	Player[1].setScore(Card[randCard].getValue());
 
-	cout << "You have " << Player[1].getScore() << "." << endl << endl;
+	cout << Player[1].getName() << " has " << Player[1].getScore() << "." << endl << endl;
 	
-	while (Player[1].getStay == false) {
-	
+	//user plays
+	while (Player[1].getStay() == false) {
+		cout << "Hit (h) or stay (s)? ";
+		cin >> hitStay;
+		if (hitStay == 'h') {
+			//draw a random card, print it, and update the total
+			cout << "Hitting, " << Player[1].getName() << " draws: " << endl;
+			randCard = getRandomCard();
+			while (Card[randCard].getUsed() == true) {
+				randCard = getRandomCard();
+			}
+			Card[randCard].setUsed(true);
+			cout << Card[randCard].getName() << Card[randCard].getSuit() << endl;
+			Player[1].setScore(Card[randCard].getValue());
+			cout << Player[1].getName() << " has " << Player[1].getScore() << "." << endl;
 
+			if (Player[1].getScore() > 21) {
+				cout << "Bust! " << Player[1].getName() << " has more than 21, " << Player[1].getName() << " loses." << endl;
+				Player[1].setStay(true);
+			}
+			cout << endl;
+		}
+		if (hitStay == 's') {
+			Player[1].setStay(true);
+		}
 	}
 
+	//dealer plays if player has not bust
+	if (Player[1].getScore() > 21) {
+		while (Player[0].getStay() == false) {
+			if (Player[0].getScore() < 17) {
+				cout << Player[0].getName() << " has less than 17 and must hit." << endl;
+				//draw a random card, print it, and update the total
+				cout << "Hitting, " << Player[0].getName() << " draws: ";
+				randCard = getRandomCard();
+				while (Card[randCard].getUsed() == true) {
+					randCard = getRandomCard();
+				}
+				Card[randCard].setUsed(true);
+				cout << Card[randCard].getName() << Card[randCard].getSuit() << endl;
+				Player[0].setScore(Card[randCard].getValue());
+				cout << Player[0].getName() << " has " << Player[0].getScore() << "." << endl;
 
+				if (Player[0].getScore() > 21) {
+					cout << "Bust! " << Player[0].getName() << " has more than 21, " << Player[0].getName() << " loses." << endl << Player[1].getName() << " wins!" << endl;
+					Player[0].setStay(true);
+				}
+			}
+			else if (Player[0].getScore() > 17) {
+				cout << Player[0].getName() << " has more than 17 and must stay." << endl;
+				Player[0].setStay(true);
+				if (Player[0].getScore() < Player[1].getScore()) {
+					cout << Player[0].getName() << " has " << Player[0].getScore() << " and " << Player[1].getName() << " has " << Player[1].getScore() << ". " << Player[0].getName() << " wins.";
+				}
+				else if (Player[0].getScore() < Player[1].getScore()) {
+					cout << Player[0].getName() << " has " << Player[0].getScore() << " and " << Player[1].getName() << " has " << Player[1].getScore() << ". " << Player[1].getName() << " wins!" << endl;
+				}
+				else if (Player[0].getScore() == Player[1].getScore()) {
+					cout << Player[0].getName() << " has " << Player[0].getScore() << " and " << Player[1].getName() << " has " << Player[1].getScore() << ". " << Player[0].getName() << " wins ties." << endl;
+				}
+			}
+		}
+	}
 
 	char x;
 	cin >> x;
